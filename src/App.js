@@ -19,15 +19,14 @@ const token = localStorage.getItem('token');
 if(token){
   tokenAuth(token)
 } else {
-  
+  console.error();
 }
 
 function App() {
-
   return (
     <ProyectoState>
       <TareaState>
-        <AlertaState>
+        <AlertaState>s
           <AuthState>
             <Router>
               <Switch>

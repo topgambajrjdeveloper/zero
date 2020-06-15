@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
-import AuthContext from '../../context/autenticacion/authContext'
+import AuthContext from "../../context/autenticacion/authContext";
 
 const NuevaCuenta = (props) => {
   //Extraer los valores del context
@@ -9,20 +9,17 @@ const NuevaCuenta = (props) => {
   const { alerta, mostrarAlerta } = alertaContext;
 
   const authContext = useContext(AuthContext);
-  const { registrarUsuario, mensaje, autenticado } =authContext;
+  const { registrarUsuario, mensaje, autenticado } = authContext;
 
   //En caso de que hay un registro duplicado
-  useEffect(()=> {
-    if(autenticado) {
-      props.history.push('/proyectos')
+  useEffect(() => {
+    if (autenticado) {
+      props.history.push("/proyectos");
     }
-    if(mensaje) {
-      mostrarAlerta(
-        mensaje.msg, mensaje.categoria
-      );
+    if (mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-
-  }, [mensaje, autenticado, mostrarAlerta, props.history])
+  }, [mensaje, autenticado, mostrarAlerta, props.history]);
 
   //State para iniciar sesion
   const [usuario, guardarUsuario] = useState({
@@ -38,9 +35,11 @@ const NuevaCuenta = (props) => {
   const onChange = (e) => {
     guardarUsuario({
       ...usuario,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
+
+  
   //Guardo el usuario que quiere iniciar sesion
   const onSubmitLogin = (e) => {
     e.preventDefault();
@@ -51,7 +50,7 @@ const NuevaCuenta = (props) => {
       nombre.trim() === "" ||
       email.trim() === "" ||
       password.trim() === "" ||
-      repetir.trim() === ""
+      repetir.trim() === "" 
     ) {
       mostrarAlerta("Todos los campos son obligatorios", "alerta-error");
       return;
@@ -67,11 +66,8 @@ const NuevaCuenta = (props) => {
     }
 
     //Comprobar password iguales
-    if(password !== repetir){
-      mostrarAlerta(
-        "Las contraseñas no son iguales",
-        "alerta-error"
-      );
+    if (password !== repetir) {
+      mostrarAlerta("Las contraseñas no son iguales", "alerta-error");
       return;
     }
 
@@ -79,9 +75,9 @@ const NuevaCuenta = (props) => {
     registrarUsuario({
       nick,
       nombre,
-    email,
-    password
-    })
+      email,
+      password
+    });
   };
   return (
     <div className="form-usuario">
@@ -90,9 +86,8 @@ const NuevaCuenta = (props) => {
       ) : null}
       <div className="contenedor-form sombra-dark">
         <h1>Crear cuenta</h1>
-        <form onSubmit={onSubmitLogin}>
+        <form onSubmit={onSubmitLogin} noValidate autoComplete="off">
           <div className="campo-form">
-            <label htmlFor="nick">Nick</label>
             <input
               type="text"
               id="nick"
@@ -103,7 +98,6 @@ const NuevaCuenta = (props) => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
               id="nombre"
@@ -114,7 +108,6 @@ const NuevaCuenta = (props) => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -125,7 +118,6 @@ const NuevaCuenta = (props) => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
               id="password"
@@ -136,7 +128,6 @@ const NuevaCuenta = (props) => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="repetir">Repite tu contraseña</label>
             <input
               type="password"
               id="repetir"

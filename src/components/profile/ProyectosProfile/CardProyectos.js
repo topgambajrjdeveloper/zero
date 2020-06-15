@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect } from "react";
+import AuthContext from "../../../context/autenticacion/authContext";
 
 const CardProyectos = () => {
-    return(<h1>Hola desde los proyectos del usuario</h1>)
-}
+    // Extraer la información de autenticación
+  const authContext = useContext(AuthContext);
+  const { usuarioAutenticado } = authContext;
 
-export default CardProyectos
+  useEffect(() => {
+    usuarioAutenticado();
+    // eslint-disable-next-line
+  }, []);
+  return (
+    <h1>
+    
+      usuario.nombre
+    </h1>
+  );
+};
+
+export default CardProyectos;

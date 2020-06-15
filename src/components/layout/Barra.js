@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import AuthContext from "../../context/autenticacion/authContext";
 import { Link } from "react-router-dom";
+import noavatar from '../../assets/img/anonymous.png'
 
 const Barra = () => {
   // Extraer la información de autenticación
@@ -20,12 +21,16 @@ const Barra = () => {
           <Link className="nombre-usuario" to="/profile">
             <span style={{ "text-transform": "capitalize" }}>
               {usuario.nick}
+              <img
+                  className="profile-barra"
+                  src={noavatar || usuario.avatar}
+                  title={usuario.nick}
+                  alt={usuario.nick}
+                />
             </span>
           </Link>
         </p>
       ) : null}
-
-      <div className="options"></div>
 
       <nav className="nav-principal">
         <button

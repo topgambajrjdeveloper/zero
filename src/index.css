@@ -151,6 +151,15 @@ aside  {
 .nombre-usuario span {
   font-weight: 900;
 }
+.profile-barra{
+  width: 35px;
+  height: 35px;
+  border-radius: 25%;
+  background-color: white;
+  border: 1px solid red;
+  padding: 1px;
+  margin: 0;
+}
 .nav-principal a {
   color: var(--blanco);
   text-decoration: none;

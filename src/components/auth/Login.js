@@ -59,9 +59,8 @@ const Login = (props) => {
     ) : null}
       <div className="contenedor-form sombra-dark">
         <h1>Iniciar Sesión</h1>
-        <form onSubmit={onSubmitLogin}>
+        <form onSubmit={onSubmitLogin} noValidate autoComplete="off">
           <div className="campo-form">
-            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -72,7 +71,6 @@ const Login = (props) => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
